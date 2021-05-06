@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="css/main.css">
+        <title>My VueJS app</title>
+    </head>
+    <body>
+        <div id="vueApp" class = "container">
+            <h1 class = "" v-text="title"></h1>
+            <div class = "card">
+                <div class="flex">
+                    <input v-model = "newItem" placeholder="Add a new todo"/>
+                    <span><button @click="addItem" :disabled="newItem.length === 0">Add</button></span>
+                </div>
+            </div>
+            <div class="card-inner">
+                <ul class = "list">
+                    <li class="list-item" :class="{completed: item.completed}" v-for="item in items" v-bind:key="item.id">
+                        <div class="list-item-toggle" @click="toggleComplete(item)"></div>
+                        {{item.name}}
+                        <div class="list-item-delete" @click="removeItem(item)">Delete</div>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+        <script src="js/vue.min.js"></script>
+        <script src="js/main.js"></script>
+        
+    </body>
+</html>
